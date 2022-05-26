@@ -13,7 +13,7 @@
 		we can write multiple script in single YAML file.
 		
 		
-**Sample:-**
+	Sample:-**
 		
 			LIST- simple list eg- list of vegetable fruits color defined by - 
 			---   (START of YAML file)
@@ -53,7 +53,7 @@
 						
 			...
 			
-**cmd used in ansible 
+	cmd used in ansible 
 
 			/etc/ansible/hosts -> hosas/nodes on which automation as to perform
 			/etc/ansible/ansible.conf -> config file 
@@ -72,7 +72,7 @@
 				
 				
 				
-**Modules in ansible
+	Modules in ansible
  
 			Module is nothing but configuration on server 
 			
@@ -93,7 +93,7 @@
 			
 			*Hosts file is nothing is but inventory
 			
-** Lets Write a playbook 
+	Lets Write a playbook 
 
 			#Before this keep the ansible.cfg , hosts file in project.
 			
@@ -113,4 +113,8 @@
 				*vim /etc/profile
 				
 					alias gp='git pull origin master'
+					
+** Varible in Yaml file 
+
+			
 			

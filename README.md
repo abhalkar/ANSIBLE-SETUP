@@ -9,17 +9,16 @@
 	All the script is writen in playbook in the form of play.
 
 **What is YAML ?**
-
 		Full form og YAML is (yet another markup language) store the data in form of key or distonary: value or list.
 		we can write multiple script in single YAML file.
 		
 		
 **Sample:-**
-		---   (START of YAML file)
-					
+		
+		--- (START of YAML file)			
 		-Apple
 		-Orange
-					
+		*** (END of YAML file)
 
 						
 		

@@ -13,13 +13,13 @@
 		we can write multiple script in single YAML file.
 		
 		
-		**Sample:-**
-					---   (START of YAML file)
+**Sample:-**
+		--- (START of YAML file)
 					
-					-Apple
-					-Orange
+		-Apple
+		-Orange
 					
-					*** (END of YAML file)
+		*** (END of YAML file)
 
 						
 		

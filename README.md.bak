@@ -13,7 +13,7 @@
 		we can write multiple script in single YAML file.
 		
 		
-**Sample:-**
+	Sample:-**
 		
 			LIST- simple list eg- list of vegetable fruits color defined by - 
 			---   (START of YAML file)
@@ -53,7 +53,7 @@
 						
 			...
 			
-**cmd used in ansible 
+	cmd used in ansible 
 
 			/etc/ansible/hosts -> hosas/nodes on which automation as to perform
 			/etc/ansible/ansible.conf -> config file 
@@ -72,7 +72,7 @@
 				
 				
 				
-**Modules in ansible
+	Modules in ansible
  
 			Module is nothing but configuration on server 
 			
@@ -106,15 +106,43 @@
 					msg: "Hello world"
 			...
 						
-						*ansibile-playbook playbook1.yaml
+						ansibile-playbook playbook1.yaml
 						
 			# Also set alias for easy mnd like gp for git pull
 			
-				*vim /etc/profile
+					vim /etc/profile
 				
 					alias gp='git pull origin master'
 					
 ** Varible in Yaml file 
+
+	variable can use multiple time 
+	
+			we have two varibles:- 
+						cmd line -> highest
+						Local  -> Loval varibles has high priority than global    hisg
+						files  -> moderate
+						Global 	-> low
+
+			---
+- name: varible in yaml
+  hosts: all
+  tasks:
+    - debug:
+        msg: "www.google.com"
+
+# By using varibles
+
+- name: varible in yaml
+  hosts: all
+  vars:
+    - url : "www.google.com"
+  tasks:
+    - debug:
+        msg: "{{ url }}"
+...
+
+
 
 			
 			

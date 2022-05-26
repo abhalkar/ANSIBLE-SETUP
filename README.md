@@ -106,15 +106,81 @@
 					msg: "Hello world"
 			...
 						
-						*ansibile-playbook playbook1.yaml
+						ansibile-playbook playbook1.yaml
 						
 			# Also set alias for easy mnd like gp for git pull
 			
-				*vim /etc/profile
+					vim /etc/profile
 				
 					alias gp='git pull origin master'
 					
 ** Varible in Yaml file 
+
+	variable can use multiple time 
+	
+			we have two varibles:- 
+						cmd line -> highest
+						Local  -> Loval varibles has high priority than global    hisg
+						files  -> moderate
+						Global 	-> low
+						host	-> very low
+						
+
+			---
+- name: varible in yaml
+  hosts: all
+  tasks:
+    - debug:
+        msg: "www.google.com"
+
+# By using varibles
+
+----
+- name: varible in yaml
+  hosts: all
+  tasks:
+    - debug:
+        msg: "www.google.com"
+
+# By using varibles
+
+---
+- name: varible in yaml
+  hosts: all
+  tasks:
+    - debug:
+        msg: "www.google.com"
+
+# By using varibles
+
+- name: varible in yaml
+  hosts: all
+  vars:
+    - url : "global.www.google.com"
+  tasks:
+     debug:
+        msg: "{{ url }}"
+        vars:
+          url: "local.google.com"
+
+- name: varible using again 
+  tasks: 
+    debug:
+      msg: "{{ url }}"
+
+- name: varibles uded global 
+  tasks:
+    debug:
+      msg: "{{ url }}"
+
+- name: print os distribution 
+  debug:
+    msg: "{{ ansible_distribution }}"
+    
+- name: print os ipv4
+  debug:
+    msg:  "{{ ansible_lo.ipv4.address}}"
+...
 
 			
 			

@@ -1,7 +1,7 @@
-# ** Ansible setup on Centos 
+#**Ansible setup on Centos**# 
 
 
-# ** step1:- Try to ssh between 2 instance (ansible-mumbai = id_rsa) 
+**step1:- Try to ssh between 2 instance (ansible-mumbai = id_rsa)** 
 	
 	 mv /home/centos/ansible-mumbai.pem ./
      chmod 600 ansible-mumbai.pem
@@ -10,9 +10,9 @@
 	eg:-try to run cmd through ssh 
 	 ssh -i ansible-mumbai.pem centos@172.31.34.44 free
 				 
-# ** step2:- Setup ansible 
+#**step2:- Setup ansible**# 
 
-	## **Python pkg required for ansible
+	**Python pkg required for ansible
 	 yum install epel-release
 	 
 	## ** Now install ansible 

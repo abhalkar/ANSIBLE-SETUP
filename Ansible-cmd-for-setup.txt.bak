@@ -12,10 +12,10 @@
 				 
 # ** step2:- Setup ansible 
 
-	#Python pkg required for ansible
+	## **Python pkg required for ansible
 	 yum install epel-release
 	 
-	#Now install ansible 
+	## ** Now install ansible 
 	 yum install ansible
 	 vim /etc/ansible/hosts 
 	 

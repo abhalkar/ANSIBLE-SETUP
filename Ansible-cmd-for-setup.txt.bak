@@ -1,7 +1,7 @@
-**Ansible setup on Centos**
+# ** Ansible setup on Centos 
 
 
-**step1:- Try to ssh between 2 instance (ansible-mumbai = id_rsa)** 
+# ** step1:- Try to ssh between 2 instance (ansible-mumbai = id_rsa) 
 	
 	 mv /home/centos/ansible-mumbai.pem ./
      chmod 600 ansible-mumbai.pem
@@ -10,42 +10,14 @@
 	eg:-try to run cmd through ssh 
 	 ssh -i ansible-mumbai.pem centos@172.31.34.44 free
 				 
-**step2:- Setup ansible**
+# ** step2:- Setup ansible 
 
-	**Python pkg required for ansible
+	## **Python pkg required for ansible
 	 yum install epel-release
 	 
-	** Now install ansible 
+	## ** Now install ansible 
 	 yum install ansible
-	 vim /etc/ansible/hosts   
-	 
-	add host in hosts file 
-	
-		# This is the default ansible 'hosts' file.
-		
-		172.31.34.44 
-		
-		OR 
-		
-		[testserver]
-			172.178.2.2
-			172.178.2.3
-			172.178.2.4
-			
-		# It should live in /etc/ansible/hosts
-		
-**Error can face due to.
-
-			keep the hosts file in current dir 
-			keep the id_rsa key at location or provid path in cmd 
-			
-			  ansible -i hosts all -u centos --private-key=/root/ansible-mumbai.pem -m shell -a uptime
-			  
-			  Run the cmd where both host and public are placed.
-			  
-
-		
-
+	 vim /etc/ansible/hosts 
 	 
 	 
 	 

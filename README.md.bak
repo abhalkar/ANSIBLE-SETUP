@@ -13,7 +13,7 @@
 		we can write multiple script in single YAML file.
 		
 		
-		**Sample:-**
+		## Sample:- 
 					---   (START of YAML file)
 					
 					-Apple

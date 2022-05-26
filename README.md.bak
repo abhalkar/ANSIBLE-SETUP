@@ -53,7 +53,7 @@
 						
 			...
 			
-**cmd used in ansible 
+# cmd used in ansible 
 
 			/etc/ansible/hosts -> hosas/nodes on which automation as to perform
 			/etc/ansible/ansible.conf -> config file 
@@ -72,7 +72,7 @@
 				
 				
 				
-**Modules in ansible
+# Modules in ansible
  
 			Module is nothing but configuration on server 
 			
@@ -90,5 +90,11 @@
 			according to project we can create different config file and hosts file rather doing changes in /etc/ansible/ansbile.cfg it will easy to manage.
 			
 			*ansible -i hosts all -m shell -a hostname    -> hostname is module and run on shell 
+			
+			*Hosts file is nothing is but inventory
+			
+# Lets Write a playbook 
+
+			Before this keep the ansible.cfg , hosts file in project.
 						
-		
+			

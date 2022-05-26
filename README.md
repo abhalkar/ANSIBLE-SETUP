@@ -91,8 +91,26 @@
 			
 			*ansible -i hosts all -m shell -a hostname    -> hostname is module and run on shell 
 			
+			*Hosts file is nothing is but inventory
+			
 ** Lets Write a playbook 
 
-			Before this keep the ansible.cfg , hosts file in project.
+			#Before this keep the ansible.cfg , hosts file in project.
+			
+			Debug module is used to print the hello txt 
+			---
+			- name: Print some txt 
+			  hosts: all
+			  tasks:
+				- debug:
+					msg: "Hello world"
+			...
 						
+						*ansibile-playbook playbook1.yaml
+						
+			# Also set alias for easy mnd like gp for git pull
+			
+				*vim /etc/profile
+				
+					alias gp='git pull origin master'
 			

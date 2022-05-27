@@ -1,0 +1,11 @@
+- name: privilage-escalation demo 
+  hosts: all
+  become: true
+  tasks:
+    - name: exicute dmidecode
+      shell:
+        cmd: /sbin/dmidecode
+      register: out
+    - name: print output
+      debug: 
+        msg: "{{ out }}"

@@ -1,0 +1,38 @@
+---
+# Setup for LAMP on Centos 
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Installing Apache, MySQL and PHP
+      yum:
+        name:
+          - httpd
+          - mariadb-server
+          - php
+          - php-mysql
+        state: installed
+
+    - name: Enabling and Starting the service httpd
+      service:
+        name: httpd
+        enabled: yes
+        state: started
+
+    - name: Enabling and Starting the service MySQL
+      service:
+        name: mariadb
+        enabled: yes
+        state: started
+
+    - name: Copying the php file
+      copy:
+        src: /root/index.php
+        dest: /var/www/html/index.php
+        force: yes
+  tasks1:
+    - name: Remove the mariadb 
+      service:
+        name: mariadb
+        state: absent  
+...

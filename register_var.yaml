@@ -1,0 +1,11 @@
+- name: register variable demo
+  hosts: all
+  tasks:
+    - name: get uptime
+      shell:
+        cmd: uptime
+      register: ut
+
+    - name: print uptime  
+      debug:  
+        msg: " the uptimeis is {{ ut.stdout }}" 

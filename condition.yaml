@@ -1,0 +1,11 @@
+- name: condition demo 
+  hosts: all
+  tasks:
+  - name: Readhat
+    debug:  
+      msg: "This is Redhat family"
+    when: ansible_distribution_file_variety == "Redh]Hat" or ansible_distribution == "CentOS"
+  - name: Debian
+    debug:
+      msg: "This is Debain family"
+    when: ansible_distribution_file_variety == "Debian" and ansible_distribution == "Ubantu"

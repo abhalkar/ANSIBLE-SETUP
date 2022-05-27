@@ -10,15 +10,46 @@
 ## What is YAML ?
 		Full form og YAML is (yet another markup language) store the data in form of key or distonary: value or list.
 		we can write multiple script in single YAML file.
+		Focus on indentation because most of time error happen due to wrong indentation.
 		
+		we can write data in two ways in YAMAL
 		
 		## Sample:- 
-					---   (START of YAML file)
-					
-					-Apple
-					-Orange
-					
-					*** (END of YAML file)
-
-						
 		
+			LIST- simple list eg- list of vegetable fruits color defined by - 
+			---   (START of YAML file)
+			# List of fruits
+			-apple
+			-banana
+			-mango		
+			*** (END of YAML file)	
+			---   (START of YAML file)			
+			#Dictonary- key and value 
+			Fname: Akshay
+			Lname: Bhalkar	
+			... (END of YAML file)
+			#List of dictonary and dictonary of list
+			#list of fruits
+			-apple
+				name:apple
+				color: red
+				vatimin: A
+				Country:       ( here Key has diff value )
+					-India
+					-Usa			(diff Value)
+					-uk
+			-banana 
+				name: banana
+				colour: Yello
+				vatiminm: B 
+				country: {inda,usa,england,brazil}      (key: value)
+				
+			---
+			# Multi line value 
+			address: |
+				100,south pole
+				usa
+				wardha
+						
+			...
+			

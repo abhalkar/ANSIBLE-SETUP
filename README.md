@@ -182,5 +182,157 @@
     msg:  "{{ ansible_lo.ipv4.address}}"
 ...
 
+
+# We can also use ignore error which if one task is not required
+
+- name: print os ipv4
+  debug:
+    msg:  "{{ ansible_lo.ipv4.address}}"
+  ignore_errors: yes 
 			
+			
+# AGENDA FOR ANSIBLE
+
+-register varible ?
+
+			we can store value in variable. EG- when we want to store any output that time we will use register variables
+			Ansible register is a way to capture the output from task execution and store it in a variable
+	$ Example
+	
+	
+- name: register variable demo
+  hosts: all
+  tasks:
+    - name: get uptime
+      shell:
+        cmd: uptime
+      register: ut                              ---------> here ut is register varible where the valu will get stored after exicution.
+
+    - name: print uptime  
+      debug:  
+        msg: " the uptimeis is {{ ut.stdout }}" 
+		
+		
+		
+-conditions ?
+			
+			**if --> else  eg:- if java is avilable then only install Tomcat
+				
+			eg:- if os is centos then install httpd 
+				 if os is ubantu then install apache2
+				 
+				 ansible -i hosts all -m setup
+Exmaple:- 
+				 
+- name: condition demo 
+  hosts: all
+  tasks:
+  - name: Readhat
+    debug:  
+      msg: "This is Redhat family"
+    when: ansible_distribution_file_variety == "Redh]Hat"             --> condition  when family is ReadHat then print above msg 
+  - name: Debian
+    debug:
+      msg: "This is Debain family"
+    when: ansible_distribution_file_variety == "Debian"    
+
+# using the AND OR condtion 
+
+		-AND (T + T = T)
+		
+- name: condition demo 
+  hosts: all
+  tasks:
+  - name: Readhat
+    debug:  
+      msg: "This is Redhat family"
+    when: ansible_distribution_file_variety == "Redh]Hat" and ansible_distribution == "CentOS"                -> if both condition satisfies then only print above msg  (t+t=t)
+	
+	
+		-OR (T + F = T) if (F + F = F)
+
+- name: condition demo 
+  hosts: all
+  tasks:
+  - name: Readhat
+    debug:  
+      msg: "This is Redhat family"
+    when: ansible_distribution_file_variety == "Redh]Hat" or ansible_distribution == "CentOS"       -> if any one is false then ok but both are false then false hence skiiping
+	
+	
+# LOOPS IN ANSIBLE
+
+		LOOPS is nothing but no of statement which are exicuting repitately called as loop. Contineously cycle 
+		in loops need to provide the list the count of list times the loop will exicute.
+		
+	EXAMPLE:-
+	
+- name: Example for loops demo
+  hosts: all
+  tasks:
+    - name: print loop
+      debug:
+        msg: "{{ item }}"                -> item will be varible
+      loop:
+        - banana
+        - mango
+        - straberry
+        - apple
+		
+		eg:- multiple pkg need to install we can use loop 
+			
+# tags 
+
+		Tags are used to identify the task.
+
+		if we have 4 tasks and we ant to add one task to another
+		
+		
+	EXAMPLE:- 
+	
+- name: tages demo 
+  hosts: all
+  tasks: 
+  - name: print redhat 
+    debug: 
+      msg: "This is readhat"
+    tags:
+      - readhat
+  - name: print Ubantu
+    debug:
+      msg: "This is ubantu"
+    tags:
+      - ubantu
+  - name: print Debian
+    debug:
+      msg: "This is debian"
+    tags:  
+      - debian 
+	  
+	  
+$ ansible-playbook tags.yml --skip-tags=ubantu
+
+		This will skip the ubantu tasg and display only reamining
+	
+# Privilage-escalation 
+
+			local user doesnt not have access to install pkges so we need to use SUDO this sudo is nothning but the privilage escalation.
+			We will use become true becasue we need to run dmidecode as sudo user local user dont have permisiion.or we can edit this in ansible.cfg
+			
+	EXAMPLE:- 
+	
+- name: privilage-escalation demo 
+  hosts: all
+  become: true
+  tasks:
+    - name: exicute dmidecode
+      shell:
+        cmd: /sbin/dmidecode
+      register: out
+    - name: print output
+      debug: 
+        msg: "{{ out }}"
+		
+
+	
 			

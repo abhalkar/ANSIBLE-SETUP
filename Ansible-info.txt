@@ -1,55 +1,26 @@
-## what is Ansible ?
+---
+## Variables in Ansible
 
-	Ansible is a configuration managment tool which is used for configuring the Node or salve machine through ssh.
-	Ansible use the PUSH Based method to do configuration.
-	Ansible dosent require the 3re party aggent to run on node.
-	No s/w required on node system only need python installed.
-	Ansible use the YAML language for writing the play.
-	All the script is writen in playbook in the form of play.
+##priorities
+	1. CLI 
+	2. LOCAL
+	3. FILES
+	4. PROMT
+	5. GLOBAL
+	6. HOSTS
 
-## What is YAML ?
-		Full form og YAML is (yet another markup language) store the data in form of key or distonary: value or list.
-		we can write multiple script in single YAML file.
-		Focus on indentation because most of time error happen due to wrong indentation.
-		
-		we can write data in two ways in YAMAL
-		
-		## Sample:- 
-		
-			LIST- simple list eg- list of vegetable fruits color defined by - 
-			---   (START of YAML file)
-			# List of fruits
-			-apple
-			-banana
-			-mango		
-			*** (END of YAML file)	
-			---   (START of YAML file)			
-			#Dictonary- key and value 
-			Fname: Akshay
-			Lname: Bhalkar	
-			... (END of YAML file)
-			#List of dictonary and dictonary of list
-			#list of fruits
-			-apple
-				name:apple
-				color: red
-				vatimin: A
-				Country:       ( here Key has diff value )
-					-India
-					-Usa			(diff Value)
-					-uk
-			-banana 
-				name: banana
-				colour: Yello
-				vatiminm: B 
-				country: {inda,usa,england,brazil}      (key: value)
-				
-			---
-			# Multi line value 
-			address: |
-				100,south pole
-				usa
-				wardha
-						
-			...
-			
+## AGENDA
+	-gather facts
+		dubug: 
+			msg: "All the pere requiests are gather regarding the node to do congiguration"
+	-ignore_errors
+		debug:
+			msg: "Whenever we want to ignore any step in playbook if the block is not important so we can ignore it and execute next blocks"
+	-register_var
+		debug:
+			msg: "we can store value in variable. EG- when we want to store any output that time we will use register variables"
+	-conditions
+	-tags
+	-privilege escalation
+	-loops
+	-setfacts

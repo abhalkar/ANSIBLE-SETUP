@@ -314,6 +314,25 @@ $ ansible-playbook tags.yml --skip-tags=ubantu
 
 		This will skip the ubantu tasg and display only reamining
 	
+# Privilage-escalation 
+
+			local user doesnt not have access to install pkges so we need to use SUDO this sudo is nothning but the privilage escalation.
+			We will use become true becasue we need to run dmidecode as sudo user local user dont have permisiion.or we can edit this in ansible.cfg
+			
+	EXAMPLE:- 
+	
+- name: privilage-escalation demo 
+  hosts: all
+  become: true
+  tasks:
+    - name: exicute dmidecode
+      shell:
+        cmd: /sbin/dmidecode
+      register: out
+    - name: print output
+      debug: 
+        msg: "{{ out }}"
 		
+
 	
 			

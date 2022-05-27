@@ -127,68 +127,68 @@
 						
 
 			---
-- name: varible in yaml
-  hosts: all
-  tasks:
-    - debug:
-        msg: "www.google.com"
+	- name: varible in yaml
+	  hosts: all
+	  tasks:
+		- debug:
+			msg: "www.google.com"
 
 # By using varibles
 
 ----
-- name: varible in yaml
-  hosts: all
-  tasks:
-    - debug:
-        msg: "www.google.com"
+	- name: varible in yaml
+	  hosts: all
+	  tasks:
+		- debug:
+			msg: "www.google.com"
 
 # By using varibles
 
----
-- name: varible in yaml
-  hosts: all
-  tasks:
-    - debug:
-        msg: "www.google.com"
+	
+	- name: varible in yaml
+	  hosts: all
+	  tasks:
+		- debug:
+			msg: "www.google.com"
 
 # By using varibles
 
-- name: varible in yaml
-  hosts: all
-  vars:
-    - url : "global.www.google.com"
-  tasks:
-     debug:
-        msg: "{{ url }}"
-        vars:
-          url: "local.google.com"
+		- name: varible in yaml
+		  hosts: all
+		  vars:
+			- url : "global.www.google.com"
+		  tasks:
+			 debug:
+				msg: "{{ url }}"
+				vars:
+				  url: "local.google.com"
 
-- name: varible using again 
-  tasks: 
-    debug:
-      msg: "{{ url }}"
+		- name: varible using again 
+		  tasks: 
+			debug:
+			  msg: "{{ url }}"
 
-- name: varibles uded global 
-  tasks:
-    debug:
-      msg: "{{ url }}"
+		- name: varibles uded global 
+		  tasks:
+			debug:
+			  msg: "{{ url }}"
 
-- name: print os distribution 
-  debug:
-    msg: "{{ ansible_distribution }}"
-    
-- name: print os ipv4
-  debug:
-    msg:  "{{ ansible_lo.ipv4.address}}"
-...
+		- name: print os distribution 
+		  debug:
+			msg: "{{ ansible_distribution }}"
+			
+		- name: print os ipv4
+		  debug:
+			msg:  "{{ ansible_lo.ipv4.address}}"
+		
 
 
 # We can also use ignore error which if one task is not required
 
-- name: print os ipv4
-  debug:
-    msg:  "{{ ansible_lo.ipv4.address}}"
-  ignore_errors: yes 
+		- name: print os ipv4
+		  debug:
+			msg:  "{{ ansible_lo.ipv4.address}}"
+		  ignore_errors: yes 
 			
 			
 # AGENDA FOR ANSIBLE
@@ -201,17 +201,17 @@
 $ Example
 	
 	
-	- name: register variable demo
-	  hosts: all
-	  tasks:
-		- name: get uptime
-		  shell:
-			cmd: uptime
-		  register: ut                              ---------> here ut is register varible where the valu will get stored after exicution.
+		- name: register variable demo
+		  hosts: all
+		  tasks:
+			- name: get uptime
+			  shell:
+				cmd: uptime
+			  register: ut                              ---------> here ut is register varible where the valu will get stored after exicution.
 
-		- name: print uptime  
-		  debug:  
-			msg: " the uptimeis is {{ ut.stdout }}" 
+			- name: print uptime  
+			  debug:  
+				msg: " the uptimeis is {{ ut.stdout }}" 
 		
 		
 		
@@ -225,41 +225,41 @@ $ Example
 				 ansible -i hosts all -m setup
 Exmaple:- 
 				 
-	- name: condition demo 
-	  hosts: all
-	  tasks:
-	  - name: Readhat
-		debug:  
-			msg: "This is Redhat family"
-		when: ansible_distribution_file_variety == "Redh]Hat"             --> condition  when family is ReadHat then print above msg 
-	  - name: Debian
-		debug:
-			msg: "This is Debain family"
-		when: ansible_distribution_file_variety == "Debian"    
+		- name: condition demo 
+		  hosts: all
+		  tasks:
+		  - name: Readhat
+			debug:  
+				msg: "This is Redhat family"
+			when: ansible_distribution_file_variety == "Redh]Hat"             --> condition  when family is ReadHat then print above msg 
+		  - name: Debian
+			debug:
+				msg: "This is Debain family"
+			when: ansible_distribution_file_variety == "Debian"    
 
 # using the AND OR condtion 
 
 AND (T + T = T)
 		
-	- name: condition demo 
-	  hosts: all
-	  tasks:
-		- name: Readhat
-		  debug:  
-			msg: "This is Redhat family"
-		  when: ansible_distribution_file_variety == "Redh]Hat" and ansible_distribution == "CentOS"                -> if both condition satisfies then only print above msg  (t+t=t)
+		- name: condition demo 
+		  hosts: all
+		  tasks:
+			- name: Readhat
+			  debug:  
+				msg: "This is Redhat family"
+			  when: ansible_distribution_file_variety == "Redh]Hat" and ansible_distribution == "CentOS"                -> if both condition satisfies then only print above msg  (t+t=t)
 	
 	
 OR (T + F = T) if (F + F = F)
 
-	- name: condition demo 
-	  hosts: all
-	  tasks:
-		- name: Readhat
-		  debug:  
-			msg: "This is Redhat family"
-		  when: ansible_distribution_file_variety == "Redh]Hat" or ansible_distribution == "CentOS"       -> if any one is false then ok but both are false then false hence skiiping
-	
+		- name: condition demo 
+		  hosts: all
+		  tasks:
+			- name: Readhat
+			  debug:  
+				msg: "This is Redhat family"
+			  when: ansible_distribution_file_variety == "Redh]Hat" or ansible_distribution == "CentOS"       -> if any one is false then ok but both are false then false hence skiiping
+		
 	
 # LOOPS IN ANSIBLE
 
@@ -267,18 +267,18 @@ OR (T + F = T) if (F + F = F)
 		in loops need to provide the list the count of list times the loop will exicute.
 		
 	EXAMPLE:-
-	
-	- name: Example for loops demo
-	  hosts: all
-	  tasks:
-		- name: print loop
-		  debug:
-			msg: "{{ item }}"                -> item will be varible
-		  loop:
-			- banana
-			- mango
-			- straberry
-			- apple
+		
+		- name: Example for loops demo
+		  hosts: all
+		  tasks:
+			- name: print loop
+			  debug:
+				msg: "{{ item }}"                -> item will be varible
+			  loop:
+				- banana
+				- mango
+				- straberry
+				- apple
 		
 		eg:- multiple pkg need to install we can use loop 
 			
@@ -290,25 +290,25 @@ OR (T + F = T) if (F + F = F)
 		
 		
 	EXAMPLE:- 
-	
-	- name: tages demo 
-	  hosts: all
-	  tasks: 
-	  - name: print redhat 
-		debug: 
-		  msg: "This is readhat"
-		tags:
-		  - readhat
-	  - name: print Ubantu
-		debug:
-		  msg: "This is ubantu"
-		tags:
-		  - ubantu
-	  - name: print Debian
-		debug:
-		  msg: "This is debian"
-		tags:  
-		  - debian 
+		
+		- name: tages demo 
+		  hosts: all
+		  tasks: 
+		  - name: print redhat 
+			debug: 
+			  msg: "This is readhat"
+			tags:
+			  - readhat
+		  - name: print Ubantu
+			debug:
+			  msg: "This is ubantu"
+			tags:
+			  - ubantu
+		  - name: print Debian
+			debug:
+			  msg: "This is debian"
+			tags:  
+			  - debian 
 	  
 	  
 	$ ansible-playbook tags.yml --skip-tags=ubantu
@@ -322,17 +322,17 @@ OR (T + F = T) if (F + F = F)
 			
 EXAMPLE:- 
 	
-	- name: privilage-escalation demo 
-	  hosts: all
-	  become: true
-	  tasks:
-		- name: exicute dmidecode
-		  shell:
-			cmd: /sbin/dmidecode
-		  register: out
-		- name: print output
-		  debug: 
-			msg: "{{ out }}"
+		- name: privilage-escalation demo 
+		  hosts: all
+		  become: true
+		  tasks:
+			- name: exicute dmidecode
+			  shell:
+				cmd: /sbin/dmidecode
+			  register: out
+			- name: print output
+			  debug: 
+				msg: "{{ out }}"
 		
 
 	

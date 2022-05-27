@@ -225,40 +225,40 @@ $ Example
 				 ansible -i hosts all -m setup
 Exmaple:- 
 				 
-- name: condition demo 
-  hosts: all
-  tasks:
-  - name: Readhat
-    debug:  
-      msg: "This is Redhat family"
-    when: ansible_distribution_file_variety == "Redh]Hat"             --> condition  when family is ReadHat then print above msg 
-  - name: Debian
-    debug:
-      msg: "This is Debain family"
-    when: ansible_distribution_file_variety == "Debian"    
+	- name: condition demo 
+	  hosts: all
+	  tasks:
+	  - name: Readhat
+		debug:  
+			msg: "This is Redhat family"
+		when: ansible_distribution_file_variety == "Redh]Hat"             --> condition  when family is ReadHat then print above msg 
+	  - name: Debian
+		debug:
+			msg: "This is Debain family"
+		when: ansible_distribution_file_variety == "Debian"    
 
 # using the AND OR condtion 
 
-		-AND (T + T = T)
+AND (T + T = T)
 		
-- name: condition demo 
-  hosts: all
-  tasks:
-  - name: Readhat
-    debug:  
-      msg: "This is Redhat family"
-    when: ansible_distribution_file_variety == "Redh]Hat" and ansible_distribution == "CentOS"                -> if both condition satisfies then only print above msg  (t+t=t)
+	- name: condition demo 
+	  hosts: all
+	  tasks:
+		- name: Readhat
+		  debug:  
+			msg: "This is Redhat family"
+		  when: ansible_distribution_file_variety == "Redh]Hat" and ansible_distribution == "CentOS"                -> if both condition satisfies then only print above msg  (t+t=t)
 	
 	
-		-OR (T + F = T) if (F + F = F)
+OR (T + F = T) if (F + F = F)
 
-- name: condition demo 
-  hosts: all
-  tasks:
-  - name: Readhat
-    debug:  
-      msg: "This is Redhat family"
-    when: ansible_distribution_file_variety == "Redh]Hat" or ansible_distribution == "CentOS"       -> if any one is false then ok but both are false then false hence skiiping
+	- name: condition demo 
+	  hosts: all
+	  tasks:
+		- name: Readhat
+		  debug:  
+			msg: "This is Redhat family"
+		  when: ansible_distribution_file_variety == "Redh]Hat" or ansible_distribution == "CentOS"       -> if any one is false then ok but both are false then false hence skiiping
 	
 	
 # LOOPS IN ANSIBLE
@@ -268,17 +268,17 @@ Exmaple:-
 		
 	EXAMPLE:-
 	
-- name: Example for loops demo
-  hosts: all
-  tasks:
-    - name: print loop
-      debug:
-        msg: "{{ item }}"                -> item will be varible
-      loop:
-        - banana
-        - mango
-        - straberry
-        - apple
+	- name: Example for loops demo
+	  hosts: all
+	  tasks:
+		- name: print loop
+		  debug:
+			msg: "{{ item }}"                -> item will be varible
+		  loop:
+			- banana
+			- mango
+			- straberry
+			- apple
 		
 		eg:- multiple pkg need to install we can use loop 
 			
@@ -291,24 +291,24 @@ Exmaple:-
 		
 	EXAMPLE:- 
 	
-- name: tages demo 
-  hosts: all
-  tasks: 
-  - name: print redhat 
-    debug: 
-      msg: "This is readhat"
-    tags:
-      - readhat
-  - name: print Ubantu
-    debug:
-      msg: "This is ubantu"
-    tags:
-      - ubantu
-  - name: print Debian
-    debug:
-      msg: "This is debian"
-    tags:  
-      - debian 
+	- name: tages demo 
+	  hosts: all
+	  tasks: 
+	  - name: print redhat 
+		debug: 
+		  msg: "This is readhat"
+		tags:
+		  - readhat
+	  - name: print Ubantu
+		debug:
+		  msg: "This is ubantu"
+		tags:
+		  - ubantu
+	  - name: print Debian
+		debug:
+		  msg: "This is debian"
+		tags:  
+		  - debian 
 	  
 	  
 	$ ansible-playbook tags.yml --skip-tags=ubantu
@@ -322,17 +322,17 @@ Exmaple:-
 			
 EXAMPLE:- 
 	
-- name: privilage-escalation demo 
-  hosts: all
-  become: true
-  tasks:
-    - name: exicute dmidecode
-      shell:
-        cmd: /sbin/dmidecode
-      register: out
-    - name: print output
-      debug: 
-        msg: "{{ out }}"
+	- name: privilage-escalation demo 
+	  hosts: all
+	  become: true
+	  tasks:
+		- name: exicute dmidecode
+		  shell:
+			cmd: /sbin/dmidecode
+		  register: out
+		- name: print output
+		  debug: 
+			msg: "{{ out }}"
 		
 
 	

@@ -201,17 +201,17 @@
 $ Example
 	
 	
-**- name: register variable demo
-  hosts: all
-  tasks:
-    - name: get uptime
-      shell:
-        cmd: uptime
-      register: ut                              ---------> here ut is register varible where the valu will get stored after exicution.
+	- name: register variable demo
+	  hosts: all
+	  tasks:
+		- name: get uptime
+		  shell:
+			cmd: uptime
+		  register: ut                              ---------> here ut is register varible where the valu will get stored after exicution.
 
-    - name: print uptime  
-      debug:  
-        msg: " the uptimeis is {{ ut.stdout }}" 
+		- name: print uptime  
+		  debug:  
+			msg: " the uptimeis is {{ ut.stdout }}" 
 		
 		
 		

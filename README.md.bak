@@ -197,10 +197,11 @@
 
 			we can store value in variable. EG- when we want to store any output that time we will use register variables
 			Ansible register is a way to capture the output from task execution and store it in a variable
-	$ Example
+			
+$ Example
 	
 	
-- name: register variable demo
+**- name: register variable demo
   hosts: all
   tasks:
     - name: get uptime
@@ -310,7 +311,7 @@ Exmaple:-
       - debian 
 	  
 	  
-$ ansible-playbook tags.yml --skip-tags=ubantu
+	$ ansible-playbook tags.yml --skip-tags=ubantu
 
 		This will skip the ubantu tasg and display only reamining
 	
@@ -319,7 +320,7 @@ $ ansible-playbook tags.yml --skip-tags=ubantu
 			local user doesnt not have access to install pkges so we need to use SUDO this sudo is nothning but the privilage escalation.
 			We will use become true becasue we need to run dmidecode as sudo user local user dont have permisiion.or we can edit this in ansible.cfg
 			
-	EXAMPLE:- 
+EXAMPLE:- 
 	
 - name: privilage-escalation demo 
   hosts: all

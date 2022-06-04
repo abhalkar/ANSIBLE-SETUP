@@ -7,6 +7,15 @@
 	No s/w required on node system only need python installed.
 	Ansible use the YAML language for writing the play.
 	All the script is writen in playbook in the form of play.
+		- v option with ansible cmd is used for verbously.
+	Ansible is mostely used for patching
+
+# what are ansible aadhoc cmd?
+	- It is the cmd which runs on multiple hosts 
+	- These are setup , gather_facts, ping, uptime
+	- eg: 
+		*ansible -i host all -u centos --private-key=id_rsa -m shell -a uptime 
+		*ansible -m shell -a gather_facts
 
 **What is YAML ?**
 		Full form og YAML is (yet another markup language) store the data in form of key or distonary: value or list.
@@ -193,12 +202,12 @@
 			
 # AGENDA FOR ANSIBLE
 
--register varible ?
+#What is register varible ?
 
 			we can store value in variable. EG- when we want to store any output that time we will use register variables
 			Ansible register is a way to capture the output from task execution and store it in a variable
 			
-$ Example
+Example
 	
 	
 		- name: register variable demo
@@ -215,7 +224,7 @@ $ Example
 		
 		
 		
--conditions ?
+# What is Conditions ?
 			
 			**if --> else  eg:- if java is avilable then only install Tomcat
 				
@@ -335,5 +344,31 @@ EXAMPLE:-
 				msg: "{{ out }}"
 		
 
+# Roles in ansible
+
+	The role is the primary mechanism for breaking a playbook into multiple files.
+	An Ansible role has a defined directory structure with eight main standard directories. 
+	You must include at least one of these directories in each role. You can omit any directories the role does not use. For example:
+		
+		ansible-galaxy role init  webserver               -> webserver is role 
+		yum install tree     -> to see the tree structure
+		tree webserver
+		
 	
-			
+			webserver
+			├── defaults
+			│   └── main.yml
+			├── files
+			├── handlers
+			│   └── main.yml
+			├── meta
+			│   └── main.yml
+			├── README.md
+			├── tasks
+			│   └── main.yml
+			├── templates
+			├── tests
+			│   ├── inventory
+			│   └── test.yml
+			└── vars
+				└── main.yml
